@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './addVideoStyle.css';
 
 const initalStateVideoFormData = {
@@ -9,7 +9,7 @@ const initalStateVideoFormData = {
   verified: false
 }
 
-const AddVideo = ({addVideos}) => {
+const AddVideo = ({addVideos, editableVideo, updateHandaler}) => {
 
   const [video, setVideo] = useState(initalStateVideoFormData);
 
@@ -23,17 +23,26 @@ const AddVideo = ({addVideos}) => {
   const submitHandaler = (e) => {
     e.preventDefault();
     console.log(video);
-    addVideos(video);
+    if(editableVideo?.title !== '')
+      updateHandaler(video);
+    else
+      addVideos(video);
     setVideo(initalStateVideoFormData);
   };
+
+  useEffect(() => {
+    if(editableVideo?.title)
+      setVideo(editableVideo);
+  }, [editableVideo]);
 
   return (
     <form >
       <input type="text" name="title" placeholder="title" onChange={changeHandaler} value={video.title}/>
       <input type="text" name="views" placeholder="views" onChange={changeHandaler} value={video.views}/>
-      <button onClick={submitHandaler}>Add Video</button>
+      <button onClick={submitHandaler}>{editableVideo?.title? 'Edit' : 'Add'} Video</button>
     </form>
   );
 };
 
 export default AddVideo;
+export {initalStateVideoFormData};

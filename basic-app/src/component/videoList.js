@@ -1,7 +1,7 @@
 import Video from './video';
 import PlayButton from './UI/playButton';
 
-const VideoList = ({videos}) => {
+const VideoList = ({videos, deleteVideo, editVideo}) => {
   return (
     <>
     {
@@ -13,6 +13,8 @@ const VideoList = ({videos}) => {
         channel={video.channel}
         verified={video.verified}
         id={video.id}
+        deleteVideo={deleteVideo}
+        editVideo={editVideo}
         >
         <PlayButton 
           onPlay={() => {alert('Play')}} 
