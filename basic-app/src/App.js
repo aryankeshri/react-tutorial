@@ -21,16 +21,13 @@ function App() {
   }
 
   const updateHandaler = (video) => {
-    console.log(video);
     const index = videos.findIndex(v => v.id === video?.id);
-    console.log(index);
     const newVideos = [...videos];
     newVideos.splice(index, 1, video);
     setVideos(newVideos);
   }
 
   const deleteVideoHandaler = (id) => {
-    console.log(id);
     setVideos(videos.filter(video => video.id !== id))    
   };
 

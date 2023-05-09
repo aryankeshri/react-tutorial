@@ -22,7 +22,6 @@ const AddVideo = ({addVideos, editableVideo, updateHandaler}) => {
 
   const submitHandaler = (e) => {
     e.preventDefault();
-    console.log(video);
     if(editableVideo?.title !== '')
       updateHandaler(video);
     else
