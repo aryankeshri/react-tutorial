@@ -9,7 +9,7 @@ const initalStateVideoFormData = {
   verified: false
 }
 
-const AddVideo = ({addVideos, editableVideo, updateHandaler}) => {
+const AddVideo = ({dispatch, editableVideo}) => {
 
   const [video, setVideo] = useState(initalStateVideoFormData);
 
@@ -23,9 +23,9 @@ const AddVideo = ({addVideos, editableVideo, updateHandaler}) => {
   const submitHandaler = (e) => {
     e.preventDefault();
     if(editableVideo?.title !== '')
-      updateHandaler(video);
+      dispatch({type:'UPDATE', payload:video});
     else
-      addVideos(video);
+      dispatch({type:'ADD', payload:video});
     setVideo(initalStateVideoFormData);
   };
 

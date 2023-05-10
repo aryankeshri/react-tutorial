@@ -1,7 +1,7 @@
 import Video from './video';
 import PlayButton from './UI/playButton';
 
-const VideoList = ({videos, deleteVideo, editVideo}) => {
+const VideoList = ({videos, dispatch, editVideo}) => {
   return (
     <>
     {
@@ -13,7 +13,7 @@ const VideoList = ({videos, deleteVideo, editVideo}) => {
         channel={video.channel}
         verified={video.verified}
         id={video.id}
-        deleteVideo={deleteVideo}
+        dispatch={dispatch}
         editVideo={editVideo}
         >
         <PlayButton 
