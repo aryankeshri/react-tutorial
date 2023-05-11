@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './addVideoStyle.css';
+import ThemeContext from '../context/themeContext';
 
 const initalStateVideoFormData = {
   title: '',
@@ -12,6 +13,7 @@ const initalStateVideoFormData = {
 const AddVideo = ({dispatch, editableVideo}) => {
 
   const [video, setVideo] = useState(initalStateVideoFormData);
+  const themContext = useContext(ThemeContext);
 
   const changeHandaler = (e) => {
     setVideo({
@@ -38,7 +40,7 @@ const AddVideo = ({dispatch, editableVideo}) => {
     <form >
       <input type="text" name="title" placeholder="title" onChange={changeHandaler} value={video.title}/>
       <input type="text" name="views" placeholder="views" onChange={changeHandaler} value={video.views}/>
-      <button onClick={submitHandaler}>{editableVideo?.title? 'Edit' : 'Add'} Video</button>
+      <button className={themContext} onClick={submitHandaler}>{editableVideo?.title? 'Edit' : 'Add'} Video</button>
     </form>
   );
 };

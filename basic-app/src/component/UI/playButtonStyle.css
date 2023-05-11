@@ -1,5 +1,5 @@
 button {
-  background-color: rgb(57, 241, 204);
+  /* background-color: rgb(57, 241, 204); */
   border: 1px solid yellow;
   padding: 1em;
   border-radius: 1em;
@@ -10,4 +10,21 @@ button {
 button:hover {
   background-color: grey;
   color: white;
+}
+
+button.darkMode {
+  background-color: black;
+}
+
+button.lightMode {
+  background-color: whitesmoke;
+  color: #333232;
+}
+
+button.darkMode:hover {
+  background-color: rgb(74, 70, 70);
+}
+
+button.lightMode:hover {
+  background-color: rgb(246, 212, 212);
 }

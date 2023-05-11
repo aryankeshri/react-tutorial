@@ -3,3 +3,12 @@
   width:100%;
   height:200vh;
 }
+
+.darkMode {
+  background-color: black;
+}
+
+.lightMode {
+  background-color: wheat;
+  color: black;
+}
