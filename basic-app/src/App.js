@@ -5,6 +5,8 @@ import videosDB from './data/videoData';
 import VideoList from './component/videoList';
 import { useContext, useReducer, useState } from 'react';
 import ThemeContext from './context/themeContext';
+import VideosContext from './context/videoContext';
+import VideoDispatchContext from './context/videoDispatchContext';
 
 function App() {
   const [editableVideo, setEditiableVideo] = useState(initalStateVideoFormData);
@@ -39,15 +41,18 @@ function App() {
 
   return (
     <ThemeContext.Provider value={mode}>
-      
-      <div className={`App ${mode}`}>
-        <button className={mode} onClick={()=>setMode(mode == 'darkMode'? 'lightMode': 'darkMode')}>Mode</button>
-        <div className="App-header">
-          <AddVideo dispatch={dispatch} editableVideo={editableVideo} />
-          <VideoList videos={videos} editVideo={editVideoHandaler} dispatch={dispatch} />
-        </div>   
-        
-      </div>
+      <VideosContext.Provider value={videos}>
+        <VideoDispatchContext.Provider value={dispatch}>
+          <div className={`App ${mode}`}>
+            <button className={mode} onClick={()=>setMode(mode == 'darkMode'? 'lightMode': 'darkMode')}>Mode</button>
+            <div className="App-header">
+              <AddVideo editableVideo={editableVideo} />
+              <VideoList editVideo={editVideoHandaler} />
+            </div>   
+            
+          </div>
+        </VideoDispatchContext.Provider>
+      </VideosContext.Provider>
     </ThemeContext.Provider>
   );
 };

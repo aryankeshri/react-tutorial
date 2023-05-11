@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import './addVideoStyle.css';
 import ThemeContext from '../context/themeContext';
+import useVideoDispatch from '../hooks/videoDispatchHook';
 
 const initalStateVideoFormData = {
   title: '',
@@ -10,10 +11,11 @@ const initalStateVideoFormData = {
   verified: false
 }
 
-const AddVideo = ({dispatch, editableVideo}) => {
+const AddVideo = ({editableVideo}) => {
 
   const [video, setVideo] = useState(initalStateVideoFormData);
   const themContext = useContext(ThemeContext);
+  const dispatch = useVideoDispatch();
 
   const changeHandaler = (e) => {
     setVideo({

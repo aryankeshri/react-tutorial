@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 import './video.css';
 import ThemeContext from '../context/themeContext';
+import useVideoDispatch from '../hooks/videoDispatchHook';
 
 
-const Video = ({id, title, channel, verified, views, time, dispatch, editVideo, children}) => {
+const Video = ({id, title, channel, verified, views, time, editVideo, children}) => {
   const themContext = useContext(ThemeContext);
+  const dispatch = useVideoDispatch();
   
   return (
     <>

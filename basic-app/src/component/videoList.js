@@ -1,7 +1,13 @@
 import Video from './video';
 import PlayButton from './UI/playButton';
+// import { useContext } from 'react';
+// import VideosContext from '../context/videoContext';
+import useVideos from '../hooks/videoHook';
 
-const VideoList = ({videos, dispatch, editVideo}) => {
+const VideoList = ({editVideo}) => {
+  const videos = useVideos();
+  // const videos = useContext(VideosContext)
+  
   return (
     <>
     {
@@ -13,7 +19,6 @@ const VideoList = ({videos, dispatch, editVideo}) => {
         channel={video.channel}
         verified={video.verified}
         id={video.id}
-        dispatch={dispatch}
         editVideo={editVideo}
         >
         <PlayButton 
